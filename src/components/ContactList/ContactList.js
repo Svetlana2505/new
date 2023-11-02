@@ -4,11 +4,6 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import EllipsisText from 'react-ellipsis-text';
 import { fetchUsers } from '../../redux/users/users-operations';
-import {
-  selectUsers,
-  selectTotalPage,
-  selectSuccess,
-} from '../../redux/selectors';
 import { Button } from '../Button';
 import { Title } from '../Title';
 import { Text } from '../Text';
@@ -17,9 +12,9 @@ import { List, Item } from './ContactList.styled';
 export const ContactList = () => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
-  const users = useSelector(selectUsers);
-  const totalPages = useSelector(selectTotalPage);
-  let success = useSelector(selectSuccess);
+  const users = useSelector(state => state.users.users);
+  const totalPages = useSelector(state => state.users.totalPages);
+  let success = useSelector(state => state.registration.success);
 
   useEffect(() => {
     dispatch(fetchUsers(page));

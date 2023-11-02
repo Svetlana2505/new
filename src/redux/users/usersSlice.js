@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsers } from "./users-operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchUsers } from './users-operations';
 
 const usersSlice = createSlice({
-  name: "users",
+  name: 'users',
   initialState: {
     users: [],
     totalPages: null,
     isLoading: false,
     error: null,
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchUsers.pending, (state) => {
+      .addCase(fetchUsers.pending, state => {
         state.isLoading = true;
       })
       .addCase(fetchUsers.fulfilled, (state, { payload }) => {

@@ -1,14 +1,12 @@
 import { FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { selectPositions } from '../redux/selectors';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchPositions } from '../redux/positions/position-operations';
 
 export const FormPosition = ({ register }) => {
-  // const [value, setValue] = useState("");
   const dispatch = useDispatch();
-  const positions = useSelector(selectPositions);
+  const positions = useSelector(state => state.positions.positions);
 
   useEffect(() => {
     dispatch(fetchPositions());
